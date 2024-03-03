@@ -9,6 +9,7 @@ import {
 import ErrorPage from "./error-page";
 // import App from './App.jsx'
 import Root from './root.jsx'
+import WeatherDisplay from './weather-display.jsx'
 import './index.css'
 
 const router = createBrowserRouter([
@@ -18,20 +19,20 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     // loader: rootLoader,
     // action: rootAction,
-    // children: [
-    //   {
-    //     errorElement: <ErrorPage />,
-    //     children: [
-    //       { index: true, 
-    //         element: <ProductListPage />,
-    //         loader : productLoader,
-    //       },
+    children: [
+      {
+        errorElement: <ErrorPage />,
+        children: [
+          { index: true, 
+            element: <WeatherDisplay />,
+            // loader : productLoader,
+          },
   
           
-    //     ],
-    //   },
+        ],
+      },
 
-    // ],
+    ],
   },
 ]);
 
