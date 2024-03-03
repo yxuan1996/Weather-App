@@ -40,7 +40,9 @@ async function call_weather_api({ query }) {
           // Raise alert notification
         } else {
           const data = await response.json();
-          console.log(data)
+          console.log(data.current)
+          console.log(data.location)
+          console.log(data.current.condition.text)
           setWeatherData(data.current)
           setLocationData(data.location)
         }
@@ -60,14 +62,40 @@ async function call_weather_api({ query }) {
     <Hero >
       <Hero.Content className="text-center text-white">
         <div className="max-w-md">
-          <h1 className="text-5xl font-bold">Hello there</h1>
-          <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
-
-          <Button color="primary">Get Started</Button>
+          <h2 className="text-4xl font-bold">{locationData.name}</h2>
+          <h3 className="text-2xl">{locationData.localtime}</h3>
+          <div className="flex flex-col">
+            <div className="flex flex-row justify-center items-stretch">
+              {/* <p>{weatherData.condition.icon}</p>
+              <img src={"https:" + weatherData.condition.icon} alt="WeatherIcon" style="flex: 1; object-fit: cover;" /> */}
+              {(temperatureUnit=="C") ? (
+                <h1 className="text-6xl font-bold">{weatherData.temp_c}°C</h1>
+              ) : (
+                <h1 className="text-6xl font-bold">{weatherData.temp_f}°F</h1>
+              )}
+            </div>
+            <div>
+              {/* <h2 className="text-3xl">{weatherData.condition.text}</h2> */}
+            </div>
+            <div>
+              {(temperatureUnit=="C") ? (
+                <h2 className="text-3xl">Feels Like: {weatherData.feelslike_c}°C</h2>
+              ) : (
+                <h2 className="text-3xl">Feels Like: {weatherData.feelslike_f}°F</h2>
+              )}
+            </div>
+            <div>
+              <h2 className="text-3xl">Humidity: {weatherData.humidity}%</h2>
+            </div>
+            <div>
+              {(temperatureUnit=="C") ? (
+                <h2 className="text-3xl">Wind: {weatherData.wind_kph}kph</h2>
+              ) : (
+                <h2 className="text-3xl">Wind: {weatherData.wind_mph}mph</h2>
+              )}
+            </div>
+          </div>
+  
         </div>
       </Hero.Content>
     </Hero>
