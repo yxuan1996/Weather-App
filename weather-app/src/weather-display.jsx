@@ -92,14 +92,14 @@ async function call_weather_api({ query }) {
               {/* <p>{weatherData.condition.icon}</p>
               <img src={"https:" + weatherData.condition.icon} alt="WeatherIcon" style="flex: 1; object-fit: cover;" /> */}
               {(temperatureUnit=="C") ? (
-                <h1 className="text-6xl font-bold">{weatherData.temp_c}°C</h1>
+                <h1 className="text-7xl font-bold">{weatherData.temp_c}°C</h1>
               ) : (
-                <h1 className="text-6xl font-bold">{weatherData.temp_f}°F</h1>
+                <h1 className="text-7xl font-bold">{weatherData.temp_f}°F</h1>
               )}
             </div>
-            <div>
-              {/* <h2 className="text-3xl">{weatherData.condition.text}</h2> */}
-            </div>
+            {/* <div>
+              <h2 className="text-3xl">{weatherData.condition.text}</h2>
+            </div> */}
             <div>
               {(temperatureUnit=="C") ? (
                 <h2 className="text-3xl">Feels Like: {weatherData.feelslike_c}°C</h2>
